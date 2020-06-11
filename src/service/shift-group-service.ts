@@ -11,19 +11,16 @@ export class ShiftGroupService {
     getGroups() {
         return this.httpService.get("http://localhost:8080/shiftgrouping/groups");
       }
-     checkShiftBelongsToGroup(shiftCode,groupCode) {
+    checkShiftBelongsToGroup(shiftCode,groupCode) {
         return this.httpService.get(`http://localhost:8080/shiftgrouping/checkshiftgroups/${shiftCode}/${groupCode}`);
      }
-     addShiftToGroup(shiftCode,groupCode) {
+    addShiftToGroup(shiftCode,groupCode) {
       return this.httpService.put(`http://localhost:8080/shiftgrouping/${shiftCode}/${groupCode}`,{});
-   }
-     createShift(shiftCode)
-     {
-         debugger
+	}
+    createShift(shiftCode){
         return this.httpService.put(`http://localhost:8080/shiftgrouping/shifts/${shiftCode}`,{});
      } 
-     createGroup(groupCode)
-     {
+    createGroup(groupCode){
         return this.httpService.put(`http://localhost:8080/shiftgrouping/groups/${groupCode}`,{});
      }
 }
