@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <label for="exampleForm2">Create Shift</label>
+      <input [(ngModel)]="shift"   type="text" id="exampleForm1" class="form-control" placeholder="Enter Shift"> 
+      <button (click)="createShift()" style="margin-top: 20px;" class="btn btn-primary">Create</button>
+    </div>
+    <div class="col-sm">
+      <label for="exampleForm2">Create Group</label>
+      <input [(ngModel)]="group"   type="text" id="exampleForm2" class="form-control" placeholder="Enter Group"> 
+      <button (click)="createGroup()" style="margin-top: 20px;" class="btn btn-primary">Create</button>
+    </div>
+    <div class="col-lm">
+      <form [formGroup]="form">
+        <label for="shifts">Select Shift</label>
+        <select  [ngModel]="shifts[0].code" (change)="selectShiftChangeHandler($event)" formControlName="shifts" id="shifts" class="browser-default custom-select custom-select-lg mb-3"> 
+          <option *ngFor="let shift of shifts; let i = index" [value]="shifts[i].code">
+            {{shifts[i].code}}
+          </option>
+        </select>
+        <label for="shifts">Select Group</label>
+        <select  [ngModel]="groups[0].code"(change)="selectGroupChangeHandler($event)" formControlName="groups" id="groups" class="browser-default custom-select custom-select-lg mb-3">
+          <option *ngFor="let group of groups; let i = index" [value]="groups[i].code">
+            {{groups[i].code}}
+          </option>
+        </select>     
+       <span>
+         <div>
+            <label for="shifts">Check Shift exits in groups:</label>
+            <button type="submit" (click)="submit('Search')"  class="btn btn-primary" value="Search">Search</button>
+          
+          <label for="shifts">Add Shift to Groups:</label>
+          <button  type="submit"  (click)="submit('Add')"  class="btn btn-primary" value="Add" style="margin-left: 16px;">Add Shift To Group</button>      
+        </div>
+        </span> 
+      </form>
+    </div>
+  </div>
+  <span><h2 style="color: green;">{{success}}</h2></span>
+  <span><h2 style="color: red;">{{failure}}</h2></span>
+</div>
+
